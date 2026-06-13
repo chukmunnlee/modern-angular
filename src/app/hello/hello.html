@@ -1,1 +1,19 @@
-<p> <code>hello, world</code> </p>
+
+<h1>{{ title }}</h1>
+
+<h2><code>hello, world ({{ count() }}) ({{ doubleCount() }})</code></h2>
+
+<button type="button" [disabled]="isDisabled" (click)="onClick()">
+  Click me!
+</button>
+
+<p>
+  <button type="button" (click)="updateCount(-1)">-</button>
+  <button type="button" (click)="updateCount()">+</button>
+</p>
+
+<p>
+  <button type="button" (click)="resetCount()">Reset</button>
+</p>
+
+<p> {{ log }} </p>
