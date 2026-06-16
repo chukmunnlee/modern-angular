@@ -1,12 +1,25 @@
 <div class="products-container">
+
   <p>Total products: {{ products().length }}</p>
+
+  <mat-form-field appearance="outline" class="search-field">
+    <mat-label>Search Products</mat-label>
+    <input matInput [(ngModel)]="searchTerm" placeholder="eg. headphones">
+    <!--
+      <input matInput [ngModel]="searchTerm()" (ngModel)="searchTerm" placeholder="eg. headphones">
+    -->
+  </mat-form-field>
+
+  <p class="search-preview">
+    Search Term: {{ searchTerm() }}
+  </p>
 
   <div class="products-grid">
     <!--
       $index: number, $count: number
       $first: boolean, $last: boolean, $even: boolean, $odd: boolean
     -->
-    @for (product of products(); track product.id) {
+    @for (product of filteredProducts(); track product.id) {
       @if ($even) {
         <app-product-card [product]="product"></app-product-card>
       } @else {
@@ -15,8 +28,7 @@
     } @empty {
       <div class="empty-state">
         <mat-icon>inventory_2</mat-icon>
-        <h3>No products available</h3>
-        <p>Check back later for new arrivals</p>
+        <h3>No products matched your search</h3>
       </div>
     }
   </div>
