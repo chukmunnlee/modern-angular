@@ -20,11 +20,7 @@
       $first: boolean, $last: boolean, $even: boolean, $odd: boolean
     -->
     @for (product of filteredProducts(); track product.id) {
-      @if ($even) {
-        <app-product-card [product]="product"></app-product-card>
-      } @else {
-        <app-product-card [product]="product" addButtonLabel="View cart"></app-product-card>
-      }
+      <app-product-card [product]="product" (addToCart)="onAddToCart($event)"></app-product-card>
     } @empty {
       <div class="empty-state">
         <mat-icon>inventory_2</mat-icon>
