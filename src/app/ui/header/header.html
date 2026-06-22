@@ -10,7 +10,8 @@
   <button matButton="">Products</button>
 
   <button matButton>
-    <mat-icon fontIcon="shopping_cart"></mat-icon>
+    <mat-icon fontIcon="shopping_cart"
+          [matBadge]="cartSvc.totalItems()"  [matBadgeHidden]="cartSvc.totalItems() <= 0"></mat-icon>
   </button>
 
 </mat-toolbar>
